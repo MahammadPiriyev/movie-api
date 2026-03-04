@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: ghcr.io/mahammadpiriyev/movie-api:1.0.0
+  IMAGE_NAME: ghcr.io/mahammadpiriyev/movie-api
 
 jobs:
   deploy:
