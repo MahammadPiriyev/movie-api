@@ -1,0 +1,29 @@
+# Ignore build outputs
+bin/
+obj/
+publish/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# DotNet Core temporary files
+*.vs/
+.vscode/
+*.DS_Store
+
+# Logs
+*.log
+
+# Git
+.git
+.gitignore
+
+# Docker related
+Dockerfile*
+docker-compose*.yml
+
+# Environment files
+.env
