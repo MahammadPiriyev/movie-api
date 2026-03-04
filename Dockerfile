@@ -7,10 +7,10 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-COPY MovieAPI/MovieAPI.csproj MovieAPI/
-COPY MovieAPI.DataAccess/MovieAPI.DataAccess.csproj MovieAPI.DataAccess/
-COPY MovieAPI.Domain/MovieAPI.Domain.csproj MovieAPI.Domain/
-COPY MovieAPI.Infrastructure/MovieAPI.Infrastructure.csproj MovieAPI.Infrastructure/
+COPY ./MovieAPI/MovieAPI.csproj ./MovieAPI/
+COPY ./MovieAPI.DataAccess/MovieAPI.DataAccess.csproj ./MovieAPI.DataAccess/
+COPY ./MovieAPI.Domain/MovieAPI.Domain.csproj ./MovieAPI.Domain/
+COPY ./MovieAPI.Infrastructure/MovieAPI.Infrastructure.csproj ./MovieAPI.Infrastructure/
 
 RUN dotnet restore "MovieAPI/MovieAPI.csproj"   
 
