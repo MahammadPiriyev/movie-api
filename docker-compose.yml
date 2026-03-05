@@ -1,6 +1,6 @@
 services:
   movieapi:
-    image: ghcr.io/mahammadpiriyev/movie-api:latest
+    image: ghcr.io/mahammadpiriyev/movie-api:${IMAGE_TAG:-latest}
     container_name: movieapi
     env_file:
       - .env
