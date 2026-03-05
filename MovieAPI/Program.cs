@@ -93,7 +93,7 @@ using (var scope = app.Services.CreateScope())
 		await dbContext.Database.MigrateAsync();
 }
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline..
 app.UseSwagger();
 app.UseSwaggerUI();
 
