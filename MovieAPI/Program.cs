@@ -45,8 +45,9 @@ builder.Services.AddSwaggerGen(c =>
 });
 // test
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+	options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 	.UseLazyLoadingProxies());
+
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
@@ -84,12 +85,17 @@ builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-	app.UseSwagger();
-	app.UseSwaggerUI();
+	var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+	if (dbContext.Database.GetPendingMigrations().Any() || !dbContext.Database.CanConnect())
+		await dbContext.Database.MigrateAsync();
 }
+
+// Configure the HTTP request pipeline.
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
