@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: ghcr.io/mahammadpiriyev/movie-api:latest
     container_name: movieapi
     env_file:
       - .env
