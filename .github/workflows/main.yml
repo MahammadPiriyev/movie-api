@@ -35,7 +35,7 @@ jobs:
       # 4️⃣ Build and push Docker image
       - name: Build & Push Docker Image
         run: |
-          docker build -f Dockerfile -t $IMAGE_NAME:${{ github.sha }} .
+          docker build --no-cache -f Dockerfile -t $IMAGE_NAME:${{ github.sha }} .
           docker tag $IMAGE_NAME:${{ github.sha }} $IMAGE_NAME:latest
           docker push $IMAGE_NAME:${{ github.sha }}
           docker push $IMAGE_NAME:latest
