@@ -44,7 +44,7 @@ jobs:
       - name: Deploy on server
         run: |
           ssh -o StrictHostKeyChecking=no -i private_key.pem "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
-            "cd ${{ secrets.DEPLOY_PATH }} && ./deploy.sh"
+            "GHCR_USER=${{ secrets.GHCR_USERNAME }} GHCR_TOKEN=${{ secrets.GHCR_TOKEN }} APP_DIR=${{ secrets.DEPLOY_PATH }} ./deploy.sh"
 
       # 6️⃣ Cleanup SSH key
       - name: Cleanup
