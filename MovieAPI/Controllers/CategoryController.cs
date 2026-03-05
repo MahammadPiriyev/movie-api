@@ -24,7 +24,7 @@ namespace MovieAPI.Controllers
 			return Ok(movieFromDb);
 		}
 
-		[HttpGet("asdfghjk")]
+		[HttpGet]
 		public async Task<IActionResult> GetAll()
 		{
 			var categoryList = await _unitOfWork.Categories.GetAllAsync();
