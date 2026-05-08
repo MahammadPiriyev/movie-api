@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      api: movie-api
+  template:
+    metadata:
+      labels:
+        api: movie-api
+    spec:
+      containers:
+        - name: movie-api
+          image: ghcr.io/mahammadpiriyev/movie-api:latest
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+
+          envFrom:
+            - secretRef:
+                name: app-secrets

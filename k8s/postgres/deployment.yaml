@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      api: movie-db
+  template:
+    metadata:
+      labels:
+        api: movie-db
+    spec:
+      containers:
+        - name: movie-db
+          image: postgres
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 5432
+
+          envFrom:
+            - secretRef:
+                name: app-secrets
